@@ -4,14 +4,16 @@ const express = require('express');
 
 const app = express();
 
-const server = app.listen(8080,()=>console.log(`server up on port ${server.address().port}`))
+const server = app.listen(8080,()=>console.log(`server up on port ${server.address().port}`));
+
+server.on("error", err => console.error(err));
 
 app.get("/productos",async(req,res)=>{
-    res.send(await getAllProducts())
+    res.send(await getAllProducts());
 })
 
 app.get('/productoRandom',async(req,res)=>{
-    res.send(await getRandomProduct())
+    res.send(await getRandomProduct());
 })
 
 
